@@ -40,6 +40,7 @@ body {
   position: fixed;
   top: 50%;
   left: 40%;
+  z-index: 100;
   transform: translate(-50%) scale(0);
   font-size: 5rem;
   text-align: center;
@@ -67,13 +68,33 @@ body {
   margin-bottom: 2rem;
 }
 .color-group .color-c .color-bg {
+  position: relative;
   width: 100%;
   height: 80px;
   cursor: pointer;
+}
+.color-group .color-c .color-bg .btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: bold;
+  line-height: 50%;
+  border: 2px solid #eeeeee;
+  border-radius: 7px;
+  transition: all 0.3s ease;
 }
 .color-group .color-c .color-name {
   padding: 0.5rem 0;
 }
 .color-group .color-c .color-type {
   color: #868e96;
+}
+.color-group .color-c:hover .btn {
+  display: block;
 }
