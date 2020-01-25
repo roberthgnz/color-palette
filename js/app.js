@@ -1,19 +1,7 @@
-let gray = document.querySelector("#gray");
-let red = document.querySelector("#red");
-let pink = document.querySelector("#pink");
-let grape = document.querySelector("#grape");
-let violet = document.querySelector("#violet");
-let blue = document.querySelector("#blue");
-let cyan = document.querySelector("#cyan");
-let teal = document.querySelector("#teal");
-let green = document.querySelector("#green");
-let lime = document.querySelector("#lime");
-let yellow = document.querySelector("#yellow");
-let orange = document.querySelector("#orange");
+let colorsContainer = ls("#colors");
+let colorSection, colorSectionTitle;
 
 let colors = {
-  white: "#ffffff",
-  black: "#000000",
   gray: [
     "#f8f9fa",
     "#f1f3f5",
@@ -172,7 +160,16 @@ let colors = {
   ]
 };
 
-/* Generate HTML elements */
+for (const color in colors) {
+  if (colors.hasOwnProperty(color)) {
+    colorsContainer.innerHTML += `<section class="color-group" id="${color}"></section>`;
+    colorSection = ls(`#${color}`);
+    colorSectionTitle = color.toUpperCase();
+    generateHTML(colorSectionTitle, colors[color], colorSection);
+  }
+}
+
+/* Insert HTML elements */
 function generateHTML(colorName, colorArr, htmlEleColor) {
   colorArr.forEach((color, index) => {
     htmlEleColor.innerHTML += `
@@ -187,20 +184,7 @@ function generateHTML(colorName, colorArr, htmlEleColor) {
   });
 }
 
-generateHTML("GRAY", colors.gray, gray);
-generateHTML("RED", colors.red, red);
-generateHTML("PINK", colors.pink, pink);
-generateHTML("GRAPE", colors.grape, grape);
-generateHTML("VIOLET", colors.violet, violet);
-generateHTML("BLUE", colors.blue, blue);
-generateHTML("CYAN", colors.cyan, cyan);
-generateHTML("TEAL", colors.teal, teal);
-generateHTML("GREEN", colors.green, green);
-generateHTML("LIME", colors.lime, lime);
-generateHTML("YELLOW", colors.yellow, yellow);
-generateHTML("ORANGE", colors.orange, orange);
-
-let btn = document.querySelectorAll(".btn");
+let btn = ls(".btn");
 
 // Audio when click on color
 let click = new Audio();
@@ -210,13 +194,13 @@ btn.forEach(el => {
   el.addEventListener("click", function(ev) {
     navigator.clipboard.writeText(ev.target.parentNode.id).then(
       () => {
-        let title = document.querySelector("h2");
+        let title = ls("h2");
         title.innerText = ev.target.parentNode.id;
         title.classList.add("show");
         click.play();
         setTimeout(() => {
           title.classList.remove("show");
-        }, 1000);
+        }, 700);
       },
       err => {
         console.error("Async: Could not copy text: ", err);

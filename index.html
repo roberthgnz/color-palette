@@ -5,11 +5,14 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124174459-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'UA-124174459-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-124174459-1');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,25 +28,16 @@
         <h1>
             COLORS <br>
             <span>
-                Version 1.0
+                Version 2.0.0
             </span>
         </h1>
         <h2></h2>
-        <section class="color-group" id="gray"></section>
-        <section class="color-group" id="red"></section>
-        <section class="color-group" id="pink"></section>
-        <section class="color-group" id="grape"></section>
-        <section class="color-group" id="violet"></section>
-        <section class="color-group" id="blue"></section>
-        <section class="color-group" id="cyan"></section>
-        <section class="color-group" id="teal"></section>
-        <section class="color-group" id="green"></section>
-        <section class="color-group" id="lime"></section>
-        <section class="color-group" id="yellow"></section>
-        <section class="color-group" id="orange"></section>
+        <div id="colors"></div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/lit-selector@3.2.0/index.min.js"></script>
     <script src="js/app.js"></script>
+
 </body>
 
 </html>
