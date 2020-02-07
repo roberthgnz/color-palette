@@ -173,10 +173,8 @@ for (const color in colors) {
 function generateHTML(colorName, colorArr, htmlEleColor) {
   colorArr.forEach((color, index) => {
     htmlEleColor.innerHTML += `
-    <div class="color-c">
-      <div class="color-bg" id="${color}" style="background-color: ${color}">
-        <h1 class="btn">COPY</h1>
-      </div>
+    <div class="color-c" title="Copy color ${color}">
+      <div class="color-bg" id="${color}" style="background-color: ${color}"></div>
       <h4 class="color-name">${colorName} ${index}</h4>
       <span class="color-type">${color}</span>
     </div>
@@ -184,18 +182,19 @@ function generateHTML(colorName, colorArr, htmlEleColor) {
   });
 }
 
-let btn = ls(".btn");
+let btn = ls(".color-c");
 
 // Audio when click on color
 let click = new Audio();
 click.src = "stapler.mp3";
 
 btn.forEach(el => {
-  el.addEventListener("click", function(ev) {
-    navigator.clipboard.writeText(ev.target.parentNode.id).then(
+  el.addEventListener("click", function() {
+    const { id } = this.querySelector('[id*="#"]');
+    navigator.clipboard.writeText(id).then(
       () => {
         let title = ls("h2");
-        title.innerText = ev.target.parentNode.id;
+        title.innerText = id;
         title.classList.add("show");
         click.play();
         setTimeout(() => {
