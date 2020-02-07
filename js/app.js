@@ -1,6 +1,6 @@
 let colorsContainer = ls("#colors");
+const menuColors = ls("#menu-colors");
 let colorSection, colorSectionTitle;
-
 let colors = {
   gray: [
     "#f8f9fa",
@@ -162,7 +162,12 @@ let colors = {
 
 for (const color in colors) {
   if (colors.hasOwnProperty(color)) {
-    colorsContainer.innerHTML += `<section class="color-group" id="${color}"></section>`;
+    menuColors.innerHTML += `<li><a href="#${color}-s"><span class="badge-${color}"></span>${color}</a></li>`;
+    colorsContainer.innerHTML += `
+    <section>
+      <h3 class="color-title" id="${color}-s">${color}</h3>
+      <div class="color-group" id="${color}"></div>
+    </section>`;
     colorSection = ls(`#${color}`);
     colorSectionTitle = color.toUpperCase();
     generateHTML(colorSectionTitle, colors[color], colorSection);
