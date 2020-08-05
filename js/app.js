@@ -1,6 +1,6 @@
 let colorsContainer = ls("#colors");
-const menuColors = ls("#menu-colors");
-let colorSection, colorSectionTitle;
+let menuColors = ls("#menu-colors");
+
 let colors = {
   gray: [
     "#f8f9fa",
@@ -12,7 +12,7 @@ let colors = {
     "#868e96",
     "#495057",
     "#343a40",
-    "#212529"
+    "#212529",
   ],
   red: [
     "#fff5f5",
@@ -24,7 +24,7 @@ let colors = {
     "#fa5252",
     "#f03e3e",
     "#e03131",
-    "#c92a2a"
+    "#c92a2a",
   ],
   pink: [
     "#fff0f6",
@@ -36,7 +36,7 @@ let colors = {
     "#e64980",
     "#d6336c",
     "#c2255c",
-    "#a61e4d"
+    "#a61e4d",
   ],
   grape: [
     "#f8f0fc",
@@ -48,7 +48,7 @@ let colors = {
     "#be4bdb",
     "#ae3ec9",
     "#9c36b5",
-    "#862e9c"
+    "#862e9c",
   ],
   violet: [
     "#f3f0ff",
@@ -60,7 +60,7 @@ let colors = {
     "#7950f2",
     "#7048e8",
     "#6741d9",
-    "#5f3dc4"
+    "#5f3dc4",
   ],
   indigo: [
     "#edf2ff",
@@ -72,7 +72,7 @@ let colors = {
     "#4c6ef5",
     "#4263eb",
     "#3b5bdb",
-    "#364fc7"
+    "#364fc7",
   ],
   blue: [
     "#e7f5ff",
@@ -84,7 +84,7 @@ let colors = {
     "#228be6",
     "#1c7ed6",
     "#1971c2",
-    "#1864ab"
+    "#1864ab",
   ],
   cyan: [
     "#e3fafc",
@@ -96,7 +96,7 @@ let colors = {
     "#15aabf",
     "#1098ad",
     "#0c8599",
-    "#0b7285"
+    "#0b7285",
   ],
   teal: [
     "#e6fcf5",
@@ -108,7 +108,7 @@ let colors = {
     "#12b886",
     "#0ca678",
     "#099268",
-    "#087f5b"
+    "#087f5b",
   ],
   green: [
     "#ebfbee",
@@ -120,7 +120,7 @@ let colors = {
     "#40c057",
     "#37b24d",
     "#2f9e44",
-    "#2b8a3e"
+    "#2b8a3e",
   ],
   lime: [
     "#f4fce3",
@@ -132,7 +132,7 @@ let colors = {
     "#82c91e",
     "#74b816",
     "#66a80f",
-    "#5c940d"
+    "#5c940d",
   ],
   yellow: [
     "#fff9db",
@@ -144,7 +144,7 @@ let colors = {
     "#fab005",
     "#f59f00",
     "#f08c00",
-    "#e67700"
+    "#e67700",
   ],
   orange: [
     "#fff4e6",
@@ -156,22 +156,25 @@ let colors = {
     "#fd7e14",
     "#f76707",
     "#e8590c",
-    "#d9480f"
-  ]
+    "#d9480f",
+  ],
 };
 
-for (const color in colors) {
-  if (colors.hasOwnProperty(color)) {
-    menuColors.innerHTML += `<li><a href="#${color}-s"><span class="badge-${color}"></span>${color}</a></li>`;
-    colorsContainer.innerHTML += `
+let colorSection, colorSectionTitle;
+for (let color in colors) {
+  menuColors.innerHTML += `<li><a href="#${color}"><span class="badge-${color}"></span>${color}</a></li>`;
+
+  colorsContainer.innerHTML += `
     <section>
-      <h3 class="color-title" id="${color}-s">${color}</h3>
-      <div class="color-group" id="${color}"></div>
+      <h3 class="color-title" id="${color}">${color}</h3>
+      <div class="color-group" data-color="${color}"></div>
     </section>`;
-    colorSection = ls(`#${color}`);
-    colorSectionTitle = color.toUpperCase();
-    generateHTML(colorSectionTitle, colors[color], colorSection);
-  }
+
+  colorSection = ls(`[data-color="${color}"]`);
+
+  colorSectionTitle = color.toUpperCase();
+
+  generateHTML(colorSectionTitle, colors[color], colorSection);
 }
 
 /* Insert HTML elements */
@@ -180,35 +183,32 @@ function generateHTML(colorName, colorArr, htmlEleColor) {
     htmlEleColor.innerHTML += `
     <div class="color-c" title="Copy color ${color}">
       <div class="color-bg" id="${color}" style="background-color: ${color}"></div>
-      <h4 class="color-name">${colorName} ${index}</h4>
+      <h4 class="color-name">${colorName} ${index + 1}</h4>
       <span class="color-type">${color}</span>
     </div>
   `;
   });
 }
 
-let btn = ls(".color-c");
+let btn = ls(".color-bg");
 
 // Audio when click on color
 let click = new Audio();
 click.src = "stapler.mp3";
 
-btn.forEach(el => {
-  el.addEventListener("click", function() {
-    const { id } = this.querySelector('[id*="#"]');
-    navigator.clipboard.writeText(id).then(
-      () => {
-        let title = ls("h2");
-        title.innerText = id;
-        title.classList.add("show");
-        click.play();
-        setTimeout(() => {
-          title.classList.remove("show");
-        }, 700);
-      },
-      err => {
-        console.error("Async: Could not copy text: ", err);
-      }
-    );
-  });
+btn.forEach((el) => {
+  el.addEventListener("click", copyColor);
 });
+
+async function copyColor() {
+  let color = this.getAttribute("id");
+  try {
+    let title = ls("h2");
+    title.innerText = color;
+    title.classList.add("show");
+    click.play();
+    await navigator.clipboard.writeText(color);
+
+    setTimeout(() => title.classList.remove("show"), 500);
+  } catch (error) {}
+}

@@ -1,25 +1,20 @@
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html {
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Roboto', sans-serif !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 @keyframes show {
   0% {
-    transform: scale(0);
+    transform: translate(-50%, -50%) scale(0);
   }
 
   100% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -37,7 +32,6 @@ body {
   max-width: 1000px;
 }
 
-
 .container h1 {
   text-align: center;
   padding: 1rem;
@@ -54,7 +48,7 @@ body {
 .container h2 {
   position: fixed;
   top: 50%;
-  left: 40%;
+  left: 50%;
   z-index: 100;
   transform: translate(-50%, -50%) scale(0);
   font-size: 5rem;
@@ -72,7 +66,7 @@ body {
   color: #868e96;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   transition: all 0.2s ease-out;
 }
 
