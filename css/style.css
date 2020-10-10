@@ -56,6 +56,75 @@ body {
   font-weight: bold;
 }
 
+/* This container holds the button and the list of choices */
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* This is for the actual button that displays current choice */
+.dropdown__btn {
+  font-weight: normal;
+  margin: 0 0 1rem;
+  padding: .5rem 1.5rem;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* This is the popup box. Position is set just below the current location of the button */
+.dropdown__content {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 162px;
+  width: 250px;
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 .5rem grey;
+  transition: visibility .25s linear, opacity .25s ease;
+}
+.dropdown__content_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* This is the styling for each option, i  */
+.dropdown__option {
+  padding: 1rem;
+  /* width: 100%; */
+  background-color: white;
+  font-weight: normal;
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color .2s ease, font-size .2s ease;
+}
+
+.dropdown__option:focus {
+  outline: 0;
+}
+
+/* This is the hover color and font-size effect */
+.dropdown__option:hover {
+  background-color: darkgrey;
+  font-size: 1.25rem;
+}
+
+/* Added this rule to center the color options at all screen sizes */
+#menu-colors {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 #menu-colors li {
   display: inline-block;
   margin: 0.5rem;
