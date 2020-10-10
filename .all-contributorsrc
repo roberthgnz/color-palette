@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "rxb3rth",
+      "name": "Roberth González",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/30651910?v=4",
+      "profile": "https://github.com/rxb3rth",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "color-palette",
+  "projectOwner": "rxb3rth",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
