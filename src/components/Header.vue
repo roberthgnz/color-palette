@@ -2,7 +2,7 @@
   <header class="header">
     <h1 class="header-title">
       COLOR PALLETE
-      <span class="version"> Version 2.2.1 </span>
+      <span class="version"> Version 3.0.0 </span>
     </h1>
     <FormatSelector />
   </header>
