@@ -1,57 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-124174459-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-124174459-1");
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Palette</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Color Palette</title>
   </head>
-
   <body>
-    <main class="container">
-      <h1>
-        COLORS
-        <span style="display: block;">
-          Version 2.2.1
-        </span>
-      </h1>
-      <div class="dropdown">
-        <button class="dropdown__btn">Copy Format: HEX - #AA1923</button>
-        <div class="dropdown__content">
-          <button class="dropdown__option" value="0">HEX - #AA1923</button>
-          <button class="dropdown__option" value="1">HEX - AA1923</button>
-          <button class="dropdown__option" value="2">RGB - (1, 2, 3)</button>
-          <button class="dropdown__option" value="3">RGBA - (1, 2, 3, 1.0)</button>
-          <button class="dropdown__option" value="4">HSL - (1, 2%, 3%)</button>
-          <button class="dropdown__option" value="5">HSLA - (1, 2%, 3%, 1.0)</button>
-        </div>
-      </div>
-      <ul id="menu-colors"></ul>
-      <h2></h2>
-      <div id="colors"></div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/lit-selector/index.min.js"></script>
-    <script src="js/app.js"></script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

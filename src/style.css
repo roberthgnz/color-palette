@@ -199,6 +199,7 @@ body {
 
 .color-group .color-c .color-name {
   padding: 0.5rem 0;
+  text-transform: uppercase;
 }
 
 .color-group .color-c .color-type {
