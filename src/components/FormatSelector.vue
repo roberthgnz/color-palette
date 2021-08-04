@@ -1,17 +1,31 @@
 <template>
   <div class="format-selector">
-    <button class="format-selector__btn">Copy Format: HEX - #AA1923</button>
-    <div class="format-selector__content">
-      <button class="format-selector__option" value="0">HEX - #AA1923</button>
-      <button class="format-selector__option" value="1">HEX - AA1923</button>
-      <button class="format-selector__option" value="2">RGB - (1, 2, 3)</button>
-      <button class="format-selector__option" value="3">
+    <button class="format-selector__btn" @click="handleFormatsOpen">
+      Copy Format: {{ formatButtonText }}
+    </button>
+    <div
+      class="format-selector__content"
+      :class="{
+        'format-selector__content--visible': isDropdownContentVisible,
+      }"
+      ref="formatList"
+    >
+      <button class="format-selector__option" @click="handleFormatSelected(0)">
+        HEX - #AA1923
+      </button>
+      <button class="format-selector__option" @click="handleFormatSelected(1)">
+        HEX - AA1923
+      </button>
+      <button class="format-selector__option" @click="handleFormatSelected(2)">
+        RGB - (1, 2, 3)
+      </button>
+      <button class="format-selector__option" @click="handleFormatSelected(3)">
         RGBA - (1, 2, 3, 1.0)
       </button>
-      <button class="format-selector__option" value="4">
+      <button class="format-selector__option" @click="handleFormatSelected(4)">
         HSL - (1, 2%, 3%)
       </button>
-      <button class="format-selector__option" value="5">
+      <button class="format-selector__option" @click="handleFormatSelected(5)">
         HSLA - (1, 2%, 3%, 1.0)
       </button>
     </div>
@@ -19,8 +33,57 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
   name: "FormatSelector",
+  setup() {
+    const colorTypes = ["HEX#", "HEX", "RGB", "RGBA", "HSL", "HSLA"];
+    const colorType = ref(colorTypes[0]); // Default color format
+    const formatButtonText = ref("HEX#");
+    const formatList = ref(null);
+    const isDropdownContentVisible = ref(false);
+
+    const store = useStore();
+
+    // Opens/closes the options popup
+    function handleFormatsOpen() {
+      isDropdownContentVisible.value = !isDropdownContentVisible.value;
+    }
+
+    // Changes the format type to be copied
+    function changeCopyFormat(type) {
+      colorType.value = colorTypes[type];
+      formatButtonText.value = colorTypes[type];
+    }
+
+    // Event listener for color format button
+    // This listener closes the popup if you click off of it
+    document.addEventListener("click", (evt) => {
+      if (
+        !evt.target.classList.contains("dropdown__btn") &&
+        formatList.value &&
+        formatList.value.classList.contains("dropdown__content_visible")
+      ) {
+        handleFormatsOpen();
+      }
+    });
+
+    // Handle the color format option
+    const handleFormatSelected = (type) => {
+      changeCopyFormat(type);
+      handleFormatsOpen();
+      store.commit("setColorFormat", type);
+    };
+
+    return {
+      handleFormatsOpen,
+      formatButtonText,
+      formatList,
+      handleFormatSelected,
+      isDropdownContentVisible,
+    };
+  },
 };
 </script>
 
@@ -60,7 +123,7 @@ export default {
   box-shadow: 0 0 0.5rem grey;
   transition: visibility 0.25s linear, opacity 0.25s ease;
 }
-.format-selector__content_visible {
+.format-selector__content--visible {
   visibility: visible;
   opacity: 1;
 }
@@ -74,6 +137,7 @@ export default {
   border: none;
   border-bottom: 1px solid #dee2e6;
   transition: background-color 0.2s ease, font-size 0.2s ease;
+  cursor: pointer;
 }
 
 .format-selector__option:focus {
