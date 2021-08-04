@@ -13,6 +13,7 @@ import ColorList from "./components/ColorList.vue";
 import ColorMenu from "./components/ColorMenu.vue";
 
 export default {
+  name: 'App',
   components: { ColorList, ColorMenu, Header },
   setup() {
     return { colors };

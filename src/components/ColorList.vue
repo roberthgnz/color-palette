@@ -1,24 +1,24 @@
 <template>
-  <div id="colors">
-    <div v-for="(value, key) in colors" :key="key">
+  <div class="color-list">
+    <template v-for="(value, key) in colors" :key="key">
       <h3 class="color-title" :id="key">{{ key }}</h3>
-      <div class="color-group" :data-color="key">
+      <div class="color-group">
         <div
           v-for="(color, index) in value"
           :key="color"
-          class="color-c"
+          class="color-info"
           :title="`Copy color ${color}`"
         >
           <div
-            class="color-bg"
+            class="color-background"
             :id="color"
             :style="{ backgroundColor: color }"
           ></div>
           <h4 class="color-name">{{ key }} {{ index + 1 }}</h4>
-          <span class="color-type">{{ color }}</span>
+          <span class="color-value">{{ color }}</span>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -65,18 +65,18 @@ export default {
   }
 }
 
-.color-group .color-c {
+.color-group .color-info {
   margin-bottom: 2rem;
 }
 
-.color-group .color-c .color-bg {
+.color-group .color-info .color-background {
   position: relative;
   width: 100%;
   height: 80px;
   cursor: pointer;
 }
 
-.color-group .color-c .color-bg .btn {
+.color-group .color-info .color-background .btn {
   display: none;
   position: absolute;
   top: 50%;
@@ -93,16 +93,16 @@ export default {
   transition: all 0.3s ease;
 }
 
-.color-group .color-c .color-name {
+.color-group .color-info .color-name {
   padding: 0.5rem 0;
   text-transform: uppercase;
 }
 
-.color-group .color-c .color-type {
+.color-group .color-info .color-value {
   color: #868e96;
 }
 
-.color-group .color-c:hover .btn {
+.color-group .color-info:hover .btn {
   display: block;
 }
 </style>
