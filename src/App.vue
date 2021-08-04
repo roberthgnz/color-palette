@@ -1,11 +1,6 @@
 <template>
   <section class="container">
-    <header class="header">
-      <h1>
-        COLORS
-        <span style="display: block"> Version 2.2.1 </span>
-      </h1>
-    </header>
+    <Header />
     <ColorList :colors="colors" />
     <ColorMenu :colors="colors" />
   </section>
@@ -13,10 +8,12 @@
 
 <script>
 import colors from "./colors";
+import Header from "./components/Header.vue";
 import ColorList from "./components/ColorList.vue";
 import ColorMenu from "./components/ColorMenu.vue";
+
 export default {
-  components: { ColorList, ColorMenu },
+  components: { ColorList, ColorMenu, Header },
   setup() {
     return { colors };
   },
