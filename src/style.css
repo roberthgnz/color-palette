@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 html {
   scroll-behavior: smooth;
@@ -68,7 +68,7 @@ body {
 .dropdown__btn {
   font-weight: normal;
   margin: 0 0 1rem;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   color: white;
   background-color: black;
   border-radius: 5px;
@@ -88,8 +88,8 @@ body {
   z-index: 1;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 0 .5rem grey;
-  transition: visibility .25s linear, opacity .25s ease;
+  box-shadow: 0 0 0.5rem grey;
+  transition: visibility 0.25s linear, opacity 0.25s ease;
 }
 .dropdown__content_visible {
   visibility: visible;
@@ -104,7 +104,7 @@ body {
   font-weight: normal;
   border: none;
   border-bottom: 1px solid #dee2e6;
-  transition: background-color .2s ease, font-size .2s ease;
+  transition: background-color 0.2s ease, font-size 0.2s ease;
 }
 
 .dropdown__option:focus {
@@ -118,94 +118,4 @@ body {
 }
 
 /* Added this rule to center the color options at all screen sizes */
-#menu-colors {
-  display: flex;
-  padding: 0;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
-#menu-colors li {
-  display: inline-block;
-  margin: 0.5rem;
-}
-
-#menu-colors li a {
-  text-decoration: none;
-  color: #868e96;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.2s ease-out;
-}
-
-.color-title {
-  margin: 30px 0;
-  font-size: 24px;
-  text-transform: capitalize;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.color-group {
-  display: grid;
-}
-
-@media (min-width: 575.98px) {
-  .color-group {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-@media (min-width: 767.98px) {
-  .color-group {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 991.98px) {
-  .color-group {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-.color-group .color-c {
-  margin-bottom: 2rem;
-}
-
-.color-group .color-c .color-bg {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  cursor: pointer;
-}
-
-.color-group .color-c .color-bg .btn {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  font-size: 1rem;
-  color: #ffffff;
-  font-weight: bold;
-  line-height: 50%;
-  border: 2px solid #eeeeee;
-  border-radius: 7px;
-  transition: all 0.3s ease;
-}
-
-.color-group .color-c .color-name {
-  padding: 0.5rem 0;
-  text-transform: uppercase;
-}
-
-.color-group .color-c .color-type {
-  color: #868e96;
-}
-
-.color-group .color-c:hover .btn {
-  display: block;
-}
