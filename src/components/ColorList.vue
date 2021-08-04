@@ -3,27 +3,22 @@
     <template v-for="(value, key) in colors" :key="key">
       <h3 class="color-title" :id="key">{{ key }}</h3>
       <div class="color-group">
-        <div
+        <ColorItem
           v-for="(color, index) in value"
           :key="color"
-          class="color-info"
-          :title="`Copy color ${color}`"
-        >
-          <div
-            class="color-background"
-            :id="color"
-            :style="{ backgroundColor: color }"
-          ></div>
-          <h4 class="color-name">{{ key }} {{ index + 1 }}</h4>
-          <span class="color-value">{{ color }}</span>
-        </div>
+          :name="`${key} ${index + 1}`"
+          :value="color"
+        />
       </div>
     </template>
   </div>
 </template>
 
 <script>
+import ColorItem from "./ColorItem.vue";
+
 export default {
+  components: { ColorItem },
   name: "ColorList",
   props: {
     colors: {
@@ -63,46 +58,5 @@ export default {
   .color-group {
     grid-template-columns: repeat(5, 1fr);
   }
-}
-
-.color-group .color-info {
-  margin-bottom: 2rem;
-}
-
-.color-group .color-info .color-background {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  cursor: pointer;
-}
-
-.color-group .color-info .color-background .btn {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
-  font-size: 1rem;
-  color: #ffffff;
-  font-weight: bold;
-  line-height: 50%;
-  border: 2px solid #eeeeee;
-  border-radius: 7px;
-  transition: all 0.3s ease;
-}
-
-.color-group .color-info .color-name {
-  padding: 0.5rem 0;
-  text-transform: uppercase;
-}
-
-.color-group .color-info .color-value {
-  color: #868e96;
-}
-
-.color-group .color-info:hover .btn {
-  display: block;
 }
 </style>

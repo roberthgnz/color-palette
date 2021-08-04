@@ -10,6 +10,7 @@
 
 <script>
 import FormatSelector from "./FormatSelector.vue";
+
 export default {
   components: { FormatSelector },
   name: "Header",

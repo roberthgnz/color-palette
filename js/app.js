@@ -1,33 +1,3 @@
-let colorsContainer = ls("#colors");
-let menuColors = ls("#menu-colors");
-
-
-
-let colorSection, colorSectionTitle;
-for (let color in colors) {
-  menuColors.innerHTML += `<li></li>`;
-
-  colorsContainer.innerHTML += `
-   `;
-
-  colorSection = ls(`[data-color="${color}"]`);
-
-  colorSectionTitle = color.toUpperCase();
-
-  generateHTML(colorSectionTitle, colors[color], colorSection);
-}
-
-/* Insert HTML elements */
-function generateHTML(colorName, colorArr, htmlEleColor) {
-  colorArr.forEach((color, index) => {
-    htmlEleColor.innerHTML += `
-    
-  `;
-  });
-}
-
-let btn = ls(".color-bg");
-
 // Audio when click on color
 let click = new Audio();
 click.src = "stapler.mp3";
