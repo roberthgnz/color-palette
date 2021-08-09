@@ -7,6 +7,7 @@
           v-for="(color, index) in value"
           :key="color"
           :name="`${key} ${index}`"
+          :number="index"
           :value="color"
         />
       </div>

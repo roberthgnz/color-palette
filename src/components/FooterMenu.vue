@@ -5,35 +5,95 @@
     @click="close"
   ></div>
   <div class="footer-menu" :class="{ 'footer-menu--active': isVisible }">
-    <a
-      href="https://github.com/yeun/open-color#how-to-use"
-      target="__blank"
-      class="footer-menu__title"
-      >How to use this color?</a
-    >
-    <h5 class="footer-menu__subtitle">Variable</h5>
-    <div class="btn-group">
-      <button class="btn" @click="copyVariable(1)">Sass, SCSS</button>
-      <button class="btn" @click="copyVariable(2)">Less</button>
-      <button class="btn" @click="copyVariable(3)">Stylus</button>
-      <button class="btn" @click="copyVariable(4)">CSS</button>
+    <div class="footer-menu__left">
+      <div class="color-preview" :style="{ backgroundColor: color }"></div>
+    </div>
+    <div class="footer-menu__right">
+      <a
+        href="https://github.com/yeun/open-color#how-to-use"
+        target="__blank"
+        class="footer-menu__title"
+        >How to use this color?</a
+      >
+      <h5 class="footer-menu__subtitle">Variable</h5>
+      <div class="btn-group">
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'variable', value: 0 })"
+        >
+          Sass, SCSS
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'variable', value: 1 })"
+        >
+          Less
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'variable', value: 2 })"
+        >
+          Stylus
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'variable', value: 3 })"
+        >
+          CSS
+        </button>
+      </div>
+      <h5 class="footer-menu__subtitle">Format</h5>
+      <div class="btn-group">
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 0 })"
+        >
+          HEX#
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 1 })"
+        >
+          HEX
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 2 })"
+        >
+          RGB
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 3 })"
+        >
+          RGBA
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 4 })"
+        >
+          HSL
+        </button>
+        <button
+          class="btn"
+          @click="$emit('click', { type: 'format', value: 5 })"
+        >
+          HSLA
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Notify from "@reliutg/buzz-notify";
 export default {
   name: "FooterMenu",
-  emits: ["close"],
+  emits: ["close", 'click'],
   props: {
     isVisible: { type: Boolean, default: false },
+    color: { type: String, required: true },
   },
   setup(_props, { emit }) {
-    const copyVariable = (code) => {
-      console.log(code);
-    };
-
     const close = ({ target }) => {
       const targetClass = "footer-menu__background--active";
       const hasClass = target.classList.contains(targetClass);
@@ -42,14 +102,7 @@ export default {
       }
       emit("close", !hasClass);
     };
-
-    // Notify({
-    //   title: "COPIED!",
-    //   html: `<div style="text-align:center">${colorFormatted}</div>`,
-    //   position: "top center",
-    // });
-
-    return { copyVariable, close };
+    return { close };
   },
 };
 </script>
@@ -59,6 +112,9 @@ export default {
   box-sizing: border-box;
 }
 .footer-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   position: fixed;
   z-index: 11;
   bottom: 0;
@@ -124,5 +180,9 @@ export default {
 }
 .btn:hover {
   background-color: rgb(249, 250, 251);
+}
+.color-preview {
+  width: 375px;
+  height: 125px;
 }
 </style>

@@ -3,19 +3,26 @@
     <div
       class="color-background"
       :style="{ backgroundColor: value }"
-      @click="copyColor(value)"
+      @click="handleColor(value)"
     ></div>
     <h4 class="color-name">{{ name }}</h4>
     <span class="color-value">{{ getColorFormatted(colorFormat, value) }}</span>
-    <FooterMenu :isVisible="isFooterMenuVisible" @close="handleClose" />
+    <FooterMenu
+      :isVisible="isFooterMenuVisible"
+      :color="value"
+      @close="handleClose"
+      @click="handleClick"
+    />
   </div>
 </template>
 
 <script>
+import Nofity from "@reliutg/buzz-notify";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { copyToClipboard } from "../helpers/copyToClipboard";
 import { getColorFormatted } from "../helpers/getColorFormatted";
+import { getColorVariable } from "../helpers/getColorVariable";
 
 import FooterMenu from "./FooterMenu.vue";
 
@@ -31,27 +38,44 @@ export default {
       type: String,
       required: true,
     },
+    number: { type: Number, required: true },
   },
-  setup() {
+  setup(props) {
     const store = useStore();
     const colorFormat = computed(() => store.state.colorFormat);
     const isFooterMenuVisible = ref(false);
 
-    const copyColor = (color) => {
-      const colorFormatted = getColorFormatted(colorFormat.value, color);
-      copyToClipboard(colorFormatted, () => {
-        isFooterMenuVisible.value = true;
-      });
+    const handleColor = (color) => {
+      isFooterMenuVisible.value = true;
     };
 
     const handleClose = (isVisible) => (isFooterMenuVisible.value = isVisible);
 
+    const handleClick = ({ type, value }) => {
+      if (type === "variable") {
+        const colorVariable = getColorVariable(
+          value,
+          props.name.split(" ")[0],
+          props.number
+        );
+        Nofity({ title: "Copied!", position: "bottom center" });
+        copyToClipboard(colorVariable);
+      }
+      if (type === "format") {
+        const formats = ["HEX#", "HEX", "RGB", "RGBA", "HSL", "HSLA"];
+        const colorFormatted = getColorFormatted(formats[value], props.value);
+        Nofity({ title: "Copied!", position: "bottom center" });
+        copyToClipboard(colorFormatted);
+      }
+    };
+
     return {
       colorFormat,
-      copyColor,
+      handleColor,
       getColorFormatted,
       isFooterMenuVisible,
       handleClose,
+      handleClick,
     };
   },
 };
