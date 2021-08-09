@@ -109,7 +109,8 @@ export default {
   border-width: 1px;
   outline: 2px solid transparent;
   outline-offset: 2px;
-  box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 #0000, inset 0 0 #0000,
+    inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: rgb(75, 85, 99);
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -119,8 +120,9 @@ export default {
   padding-bottom: 0.25rem;
   margin-right: 0.25rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 .btn:hover {
-  background-color: rgba(255, 255, 255, 0.479);
+  background-color: rgb(249, 250, 251);
 }
 </style>
