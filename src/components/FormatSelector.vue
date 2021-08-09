@@ -1,7 +1,7 @@
 <template>
   <div class="format-selector">
     <button class="format-selector__btn" @click="handleFormatsOpen">
-      Copy Format: {{ formatButtonText }}
+      Color Format: {{ formatButtonText }}
     </button>
     <div
       class="format-selector__content"

@@ -6,7 +6,7 @@
         <ColorItem
           v-for="(color, index) in value"
           :key="color"
-          :name="`${key} ${index + 1}`"
+          :name="`${key} ${index}`"
           :value="color"
         />
       </div>

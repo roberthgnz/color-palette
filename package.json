@@ -1,12 +1,13 @@
 {
   "name": "color-palette",
-  "version": "0.0.0",
+  "version": "3.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "@reliutg/buzz-notify": "^1.4.0",
     "vue": "^3.0.5",
     "vuex": "^4.0.2"
   },

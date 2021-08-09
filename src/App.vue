@@ -3,6 +3,7 @@
     <Header />
     <ColorList :colors="colors" />
     <ColorMenu :colors="colors" />
+    <div id="notify"></div>
   </section>
 </template>
 
@@ -13,7 +14,7 @@ import ColorList from "./components/ColorList.vue";
 import ColorMenu from "./components/ColorMenu.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: { ColorList, ColorMenu, Header },
   setup() {
     return { colors };

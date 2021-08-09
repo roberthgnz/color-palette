@@ -1,18 +1,18 @@
 export const copyToClipboard = (text, callback = null) => {
   function selectElementText(element) {
     if (document.selection) {
-      let range = document.body.createTextRange();
+      const range = document.body.createTextRange();
       range.moveToElementText(element);
       range.select();
     } else if (window.getSelection) {
-      let range = document.createRange();
+      const range = document.createRange();
       range.selectNode(element);
       window.getSelection().removeAllRanges();
       window.getSelection().addRange(range);
     }
   }
 
-  let element = document.createElement("div");
+  const element = document.createElement("div");
   element.textContent = text;
   document.body.appendChild(element);
   selectElementText(element);
