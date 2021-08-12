@@ -37,6 +37,10 @@ export default {
   background-color: #ffffff;
 }
 
+.dark .color-menu {
+  background-color: #161b22;
+}
+
 .color-menu-list {
   display: flex;
   padding: 0;

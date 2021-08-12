@@ -88,7 +88,7 @@
 <script>
 export default {
   name: "FooterMenu",
-  emits: ["close", 'click'],
+  emits: ["close", "click"],
   props: {
     isVisible: { type: Boolean, default: false },
     color: { type: String, required: true },
@@ -125,6 +125,10 @@ export default {
   transform: translateY(100%);
   transition: transform 0.3s ease;
   padding: 1rem;
+}
+.dark .footer-menu {
+  background-color: #161b22;
+  border-color: #22282f;
 }
 .footer-menu--active {
   transform: translateY(0);
