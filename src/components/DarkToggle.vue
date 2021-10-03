@@ -55,13 +55,15 @@
 
 <script>
 import { useDark, useToggle } from "@vueuse/core";
+import { computed } from 'vue';
 
 export default {
   name: "DarkToggle",
   setup() {
     const isDark = useDark();
     const toggleDark = useToggle(isDark);
-    return { isDark, toggleDark };
+    const color = computed(() => isDark.value ? "#fff" : "#000");
+    return { isDark, toggleDark, color };
   },
 };
 </script>
@@ -77,5 +79,9 @@ export default {
   border: 0;
   padding: 0.5rem;
   cursor: pointer;
+  font-size: 1.5rem;
+  color: v-bind(color);
+  background-color: transparent;
+  transition: color 0.3s ease;
 }
 </style>
