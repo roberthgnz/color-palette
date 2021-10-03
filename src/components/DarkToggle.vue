@@ -72,7 +72,7 @@ export default {
 .dark-toggle {
   position: fixed;
   right: 10px;
-  top: 10px;
+  top: calc(1rem + 0.83em);
 }
 .dark-toggle button {
   display: flex;
