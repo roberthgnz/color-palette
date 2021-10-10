@@ -71,4 +71,10 @@ export default {
   border-radius: 3px;
   vertical-align: middle;
 }
+
+@media screen and (max-width: 768px) {
+  .color-menu {
+    display: none;
+  }  
+}
 </style>
