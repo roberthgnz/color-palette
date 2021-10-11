@@ -5,6 +5,7 @@
     <ColorMenu :colors="colors" />
     <div id="notify"></div>
     <DarkToggle />
+    <HamBurgerMenu :colors="colors" />
   </section>
 </template>
 
@@ -14,10 +15,11 @@ import Header from "./components/Header.vue";
 import ColorList from "./components/ColorList.vue";
 import ColorMenu from "./components/ColorMenu.vue";
 import DarkToggle from "./components/DarkToggle.vue";
+import HamBurgerMenu from './components/HamburgerMenu.vue';
 
 export default {
   name: "App",
-  components: { Header, ColorList, ColorMenu, DarkToggle },
+  components: { Header, ColorList, ColorMenu, DarkToggle, HamBurgerMenu},
   setup() {
     return { colors };
   },
