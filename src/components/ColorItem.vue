@@ -17,7 +17,8 @@
 </template>
 
 <script>
-import Nofity from "@reliutg/buzz-notify";
+import { Notify } from "@reliutg/buzz-notify";
+import "@reliutg/buzz-notify/dist/buzz-notify.css";
 import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { copyToClipboard } from "../helpers/copyToClipboard";
@@ -58,13 +59,13 @@ export default {
           props.name.split(" ")[0],
           props.number
         );
-        Nofity({ title: "Copied!", position: "bottom center" });
+        Notify({ title: "Copied!", position: "bottom-center" });
         copyToClipboard(colorVariable);
       }
       if (type === "format") {
         const formats = ["HEX#", "HEX", "RGB", "RGBA", "HSL", "HSLA"];
         const colorFormatted = getColorFormatted(formats[value], props.value);
-        Nofity({ title: "Copied!", position: "bottom center" });
+        Notify({ title: "Copied!", position: "bottom-center" });
         copyToClipboard(colorFormatted);
       }
     };
