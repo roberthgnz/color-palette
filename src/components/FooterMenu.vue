@@ -126,6 +126,11 @@ export default {
   transition: transform 0.3s ease;
   padding: 1rem;
 }
+@media screen and (max-width: 760px) {
+    .footer-menu {
+      flex-direction: column;
+    }  
+  }
 .dark .footer-menu {
   background-color: #161b22;
   border-color: #22282f;
