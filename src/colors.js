@@ -1,6 +1,12 @@
-const colors = {
-  gray: [
-    "#f8f9fa",
+/*
+ *
+ *  𝗖 𝗢 𝗟 𝗢 𝗥
+ *  v 1.9.1
+ *
+ *  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+export default {
+  gray: ["#f8f9fa",
     "#f1f3f5",
     "#e9ecef",
     "#dee2e6",
@@ -9,10 +15,9 @@ const colors = {
     "#868e96",
     "#495057",
     "#343a40",
-    "#212529",
-  ],
-  red: [
-    "#fff5f5",
+    "#212529"]
+    ,
+  red: ["#fff5f5",
     "#ffe3e3",
     "#ffc9c9",
     "#ffa8a8",
@@ -21,10 +26,9 @@ const colors = {
     "#fa5252",
     "#f03e3e",
     "#e03131",
-    "#c92a2a",
-  ],
-  pink: [
-    "#fff0f6",
+    "#c92a2a"],
+  pink: 
+  ["#fff0f6",
     "#ffdeeb",
     "#fcc2d7",
     "#faa2c1",
@@ -33,10 +37,9 @@ const colors = {
     "#e64980",
     "#d6336c",
     "#c2255c",
-    "#a61e4d",
-  ],
-  grape: [
-    "#f8f0fc",
+    "#a61e4d"],
+  grape: 
+  ["#f8f0fc",
     "#f3d9fa",
     "#eebefa",
     "#e599f7",
@@ -45,10 +48,9 @@ const colors = {
     "#be4bdb",
     "#ae3ec9",
     "#9c36b5",
-    "#862e9c",
-  ],
-  violet: [
-    "#f3f0ff",
+    "#862e9c"],
+  violet: 
+  ["#f3f0ff",
     "#e5dbff",
     "#d0bfff",
     "#b197fc",
@@ -57,10 +59,9 @@ const colors = {
     "#7950f2",
     "#7048e8",
     "#6741d9",
-    "#5f3dc4",
-  ],
-  indigo: [
-    "#edf2ff",
+    "#5f3dc4"],
+  indigo: 
+  ["#edf2ff",
     "#dbe4ff",
     "#bac8ff",
     "#91a7ff",
@@ -69,10 +70,9 @@ const colors = {
     "#4c6ef5",
     "#4263eb",
     "#3b5bdb",
-    "#364fc7",
-  ],
-  blue: [
-    "#e7f5ff",
+    "#364fc7"],
+  blue: 
+  ["#e7f5ff",
     "#d0ebff",
     "#a5d8ff",
     "#74c0fc",
@@ -81,10 +81,9 @@ const colors = {
     "#228be6",
     "#1c7ed6",
     "#1971c2",
-    "#1864ab",
-  ],
-  cyan: [
-    "#e3fafc",
+    "#1864ab"],
+  cyan: 
+  ["#e3fafc",
     "#c5f6fa",
     "#99e9f2",
     "#66d9e8",
@@ -93,10 +92,9 @@ const colors = {
     "#15aabf",
     "#1098ad",
     "#0c8599",
-    "#0b7285",
-  ],
-  teal: [
-    "#e6fcf5",
+    "#0b7285"],
+  teal: 
+  ["#e6fcf5",
     "#c3fae8",
     "#96f2d7",
     "#63e6be",
@@ -105,10 +103,9 @@ const colors = {
     "#12b886",
     "#0ca678",
     "#099268",
-    "#087f5b",
-  ],
-  green: [
-    "#ebfbee",
+    "#087f5b"],
+  green: 
+  ["#ebfbee",
     "#d3f9d8",
     "#b2f2bb",
     "#8ce99a",
@@ -117,10 +114,9 @@ const colors = {
     "#40c057",
     "#37b24d",
     "#2f9e44",
-    "#2b8a3e",
-  ],
-  lime: [
-    "#f4fce3",
+    "#2b8a3e"],
+  lime: 
+  ["#f4fce3",
     "#e9fac8",
     "#d8f5a2",
     "#c0eb75",
@@ -129,10 +125,9 @@ const colors = {
     "#82c91e",
     "#74b816",
     "#66a80f",
-    "#5c940d",
-  ],
-  yellow: [
-    "#fff9db",
+    "#5c940d"],
+  yellow: 
+  ["#fff9db",
     "#fff3bf",
     "#ffec99",
     "#ffe066",
@@ -141,10 +136,10 @@ const colors = {
     "#fab005",
     "#f59f00",
     "#f08c00",
-    "#e67700",
-  ],
-  orange: [
-    "#fff4e6",
+    "#e67700"],
+
+  orange: 
+  ["#fff4e6",
     "#ffe8cc",
     "#ffd8a8",
     "#ffc078",
@@ -153,8 +148,5 @@ const colors = {
     "#fd7e14",
     "#f76707",
     "#e8590c",
-    "#d9480f",
-  ],
+    "#d9480f"],
 };
-
-export default colors;
